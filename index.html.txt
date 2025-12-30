@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experts Financial Consulting</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        .font-cairo { font-family: 'Cairo', sans-serif; }
+        .font-montserrat { font-family: 'Montserrat', sans-serif; }
+        
+        .fade-in { animation: fadeIn 0.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .animate-marquee { animation: marquee 25s linear infinite; }
+        [dir="rtl"] .animate-marquee { animation-direction: reverse; }
+        
+        /* Utility to hide/show based on state */
+        .hidden { display: none !important; }
+    </style>
+</head>
+<body class="bg-[#F6FBFE] font-cairo text-[#000105]">
+
+    <!-- App Container -->
+    <div id="app" class="min-h-screen flex flex-col">
+        <!-- Header, Content, and Footer will be injected here by JavaScript -->
+    </div>
+
+    <script>
+        // --- DATA & CONTENT ---
+        const BRAND_COLORS = {
+            primary: '#082B5D',
+            dark: '#000105',
+            secondaryDark: '#02153D',
+            neutral: '#4B6182',
+            softNeutral: '#9BACC8',
+            bg: '#F6FBFE',
+        };
+
+        const CONTENT = {
+            ar: {
+                meta: { dir: 'rtl', font: 'font-cairo' },
+                nav: {
+                    home: 'الرئيسية',
+                    about: 'من نحن؟',
+                    services: 'خدماتنا',
+                    contact: 'تواصل معنا',
+                },
+                footer: {
+                    contactTitle: 'تواصل معنا',
+                    location: 'جدة - الرياض / المملكة العربية السعودية',
+                    rights: 'جميع الحقوق محفوظة © 2024 تعاملات الخبير للاستشارات المالية',
+                    quickLinks: 'روابط سريعة',
+                    followUs: 'تابعنا'
+                },
+                home: {
+                    hero: {
+                        stats: [
+                            { label: 'الخبرة', value: '+٣٠' },
+                            { label: 'عملائنا', value: '+٢٠٠' },
+                            { label: 'دولة', value: '+٣' },
+                            { label: 'عضو', value: '+٤٥' },
+                        ],
+                        subService: 'محاسبة - مراجعة - ضرائب و زكاة - استشارات مالية',
+                        tagline: 'تعزيز رحلة ثرواتك بتوجيهات الخبراء',
+                        brandName: 'تعاملات الخبير للإستشارات المالية'
+                    },
+                    intro: {
+                        title: 'من نحن؟',
+                        headline: 'مستشارونا يتمتعون بخبرة تزيد عن 30 عامًا',
+                        body: `نساعد الشركات والأفراد على اتخاذ قرارات مالية افضل (وكذلك ابداء الرأي والنصيحة (الرأي المسبق. مجموعة الخبراء تقوم بتقديم المشورة بشأن مجموعة متنوعة من الموضوعات الاستشاريه التي تخدم المستثمر ورجل الأعمال وصاحب كل فكرة وريادة أعمال وتنظيم متطلبات العائله من مواثيق وحوكمة اجراءات بما في ذلك التخطيط الاستثماري والتنظيم المالي والإداري والتخطيط الضريبى. يمكنهم أيضًا مساعدة الشركات في التخطيط المالي، مثل إعداد القوائم الماليه والسياسات المحاسبية والدفاتر والسجلات المالية واعداد قوائم التكاليف الفعلية والمعيارية والتنبؤ والاحتمالات المستقبليه في ظل الموازنات التاريخية والقادمة.`,
+                        btn: 'للمزيد'
+                    },
+                    vision: {
+                        title: 'رؤيتنا',
+                        text: 'أن نكون شركة الاستشارات المالية الرائدة في المملكة العربية السعودية والمنطقة ، وأن نقدم لعملائنا أفضل النصائح والدعم الممكن لمساعدتهم على تحقيق أهدافهم المالية والإدارية والتشغيلية والقانونية والتنظيمية وأهداف النمو المستهدفة'
+                    },
+                    mission: {
+                        title: 'مهمتنا',
+                        text: 'تزويد عملائنا بمختلف الخدمات الاستشارية المالية والإدارية والقانونية عالية الجودة، والمصممة خصيصا لتلبية احتياجات أفرادهم ومؤسساتهم وكياناتهم وعائلاتهم. سنعمل مع عملائنا لتحقيق طموحاتهم وتحقيق أهدافهم المحددة مسبقا'
+                    },
+                    values: {
+                        title: 'قيمنا',
+                        items: [
+                            'التأكيد على المسؤولية الجماعية مع المساءلة الفردية',
+                            'إظهار الاحتراف على المستوى المؤسسي',
+                            'الالتزام بالمتطلبات التنظيمية والتشريعات',
+                            'التفاني في التميز',
+                            'إعطاء الأولوية لارضاء العملاء',
+                            'احتضان الابتكار والتقدم التكنولوجي',
+                            'رفع مستوى خبرات الموظفين ومهاراتهم وكفاءاتهم',
+                            'ترسيخ المصداقية والاعتمادية (الدقة)',
+                            'تعزيز الاحترام المتبادل',
+                            'عدم التسامح مطلقًا مع الفساد'
+                        ]
+                    },
+                    features: {
+                        title: 'ما الذى يميز تعاملات الخبير للاستشارات المالية؟',
+                        cards: [
+                            { title: 'الخبرة', text: 'تمتع المستشارون والموظفون المنتسبين لنا والمتعاونين معنا بالخبرات اللازمة لمساعدة عملاءنا وشركاءنا في اتخاذ قرارات مالية وإدارية وتنظيمية ورقابية سليمة. تمكنهم في مساعدتهم في فهم وضعهم المالي والفني والإداري والتقني ومساعدتهم في وضع خارطة طريق وتخطيط جيد يوصلهم إلى تحقيق أهدافهم .', icon: 'check-circle' },
+                            { title: 'الراحة', text: 'يمكن أن تمنحك الاستشارات راحة البال عندما تعلم أن أموالك تدار بمنظومة مكتملة . يمكن للمستشارين باختلاف مهنيتهم واستشاراتهم مراقبة استثماراتك والتأكد من أنها تستثمر وتدار بالطريقة الصحيحة', icon: 'users' },
+                            { title: 'توفير الوقت والتكلفة', text: 'النصيحة والتخطيط. والمشورة المسبقة في ظل خدمة الاستشارات المالية والإدارية والتنظيمية والتشغيلية والقانونية يمكن أن توفر عليكم الوقت والتكاليف والمتاعب والصدمات قبل وقوعها وحدوثها او معالجاتها بالسرعة والدقة اللازمة عند حدوثها', icon: 'clock' },
+                            { title: 'المصادر', text: 'شركة تعاملات الخبير للاستشارات المالية لغير الأوراق المالية هي احدي شركات بيت الخبرة الاستشاري د. صلاح الشرقاوي وشركاه - شركة مصرية - يخبراها ومنسوبيها تمتلك القدرة على الوصول إلى مصادر قد لا يتمكن الأفراد او اصحاب القرار بالشركات والمؤسسات من الوصول إليها بمفردهم، وقد تتضمن هذه المصادر بيانات مالية وأبحاث استثمارية وأدوات تخطيط ضرائب وزكاة', icon: 'shield' },
+                        ]
+                    },
+                    clients: { title: 'عملائنا' },
+                    taxBlock: {
+                        title: 'القوانين واللوائح الضريبية والزكوية',
+                        text: 'يمكن أن تكون القوانين الضريبية والزكوية و الإدارية والنظامية المنظمة للعمل معقدة ومتغيرة باستمرار، مما يجعل من الصعب على الأفراد والشركات مواكبة ذلك. يمكن لمستشارينا المساعدة في ضمان الامتثال لجميع اللوائح ذات الصلة وتقليل مخاطر العقوبات أو الغرامات.'
+                    },
+                    planning: {
+                        title: 'التخطيط المالى و الضريبى و الزكوى',
+                        text: 'يمكن أن يساعدك المستشارون الماليون في إنشاء خطة مالية شاملة تأخذ في الاعتبار دخلك ونفقاتك وأصولك وخصومك. يمكن أن تكون هذه الخطة بمثابة خارطة طريق لمستقبلك المالي وتساعدك على البقاء على المسار الصحيح لتحقيق أهدافك.'
+                    },
+                    founders: {
+                        quote: '«النجاح يبدأ دائمًا بفكرة قابلة للتنفيذ، لكنه يمر بمراحل مختلفة تتراوح من الصعب إلى الأصعب، بفضل الله ومهارة القائمين على الفكرة من المؤسسين',
+                        author: 'د. صلاح الشرقاوى - الشريك المؤسس'
+                    }
+                },
+                aboutPage: {
+                    intro: 'فى شركة تعاملات الخبير للاستشارات المالية نحن ملتزمون بتقديم خدمات التدقيق و الاستشارات المالية و الضريبيية رفيعة المستوى للأفراد والشركات على حدٍ سواء مع سنوات من الخبرة في قطاع الخدمات المالية الضريبية، يلتزم فريقنا من المهنيين ذوي الكفاءات العالية بمساعدة عملائنا على تحقيق أهدافهم المالية وتعظيم إمكاناتهم المالية.',
+                    partnersTitle: 'الشركاء',
+                    collaborationTitle: 'شراكة مع',
+                    collaborations: [
+                        { text: 'بيت الخبرة الاستشاري الدكتور صلاح الشرقاوي وشركاه (الشريك المؤسس)- شركة مصرية - و استشاريين مرخص لهم بمزاولة انشطة مالية و ضريبية و قانونية و عضو تحالف مجموعة الخبراء لديهم القدرة على الوصول إلى المصادر المختلفة قد لا يتمكن اصحاب القرار في الشركات والمؤسسات من الوصول إليها بمفردهم، وقد تشمل هذه المصادر البيانات والأبحاث المالية , أدوات التخطيط للاستثمار والضرائب والزكاة.' },
+                        { text: 'شراكة اماراتية مع شركة إى أند إم الأنصاري للتدقيق بهدف تقديم خدمات متنوعة في مجال الاستشارات المالية والتدقيق و الخبرة القضائية. وتأتي هذا الشراكة استجابةً لاحتياجات السوق وتطلعات العملاء في كلا من مصر والإمارات و السعودية للحصول على خدمات مالية و قانونية و متخصصة ذات جودة عالية' }
+                    ],
+                    team: [
+                        { name: 'د. صلاح الشرقاوى', title: 'المؤسس التنفيذي' },
+                        { name: 'ا. نبيل الشرقاوى', title: 'شريك ضريبي وإداري' },
+                        { name: 'د. هتان فاروق شامى', title: 'شريك الاستشارات المالية والإدارية' },
+                        { name: 'احمد الانصارى', title: 'شريك الضرائب والزكاة' },
+                        { name: 'ا. مصطفى الشرقاوى', title: 'شريك التدقيق والاستشارات' },
+                        { name: 'ا .محمود دياب', title: 'الشريك الإداري والمحترف في إدارة الأعمال' },
+                        { name: 'ا. محمد عبدالكريم', title: 'مدير التدقيق - الشريك الإداري' },
+                        { name: 'ا. ابراهيم ضاحى', title: 'شريك المراجعه والتقارير المالية' },
+                    ]
+                },
+                servicesPage: {
+                    items: [
+                        'تأسيس الشركات وتنفيذ آلية عمليات الاندماج والاستحواذ',
+                        'الخدمات والاستشارات القانونية علي يد متخصصين بالقانون مرخص لهم بمزاولة المهنة',
+                        'تصميم وتنفيذ سياسات وإجراءات الشركة',
+                        'إنشاء مصفوفة صلاحيات',
+                        'تصميم أنظمة إدارة فعالة للتشغيل',
+                        'تصميم أنظمة محاسبية ومالية ومخزنية وتشغيلية قوية',
+                        'الاحتفاظ بدفاتر محاسبية دقيقة وتقديم تقارير مالية منتظمة باستخدام برامج محاسبة مبسطة',
+                        'مراقبة النظام الضريبي والتعامل مع هيثة الزكاة والضرائب',
+                        'اعداد الموازنات الاستراتيجية والتنبؤ بالتدفقات النقدية المستقبلية',
+                        'خدمة تقديم الاستشارات للأنشطة والتمويل غير المصرفى',
+                        'تجهيز الشركات للاكتتابات العامة الأولية في الأسهم السعودية'
+                    ],
+                    btn: 'للتواصل'
+                }
+            },
+            en: {
+                meta: { dir: 'ltr', font: 'font-montserrat' },
+                nav: {
+                    home: 'Home',
+                    about: 'Who we are?',
+                    services: 'Our Services',
+                    contact: 'Contact Us',
+                },
+                footer: {
+                    contactTitle: 'Contact Us',
+                    location: 'Jeddah - Riyadh / Saudi Arabia',
+                    rights: 'All Rights Reserved © 2024 Experts Financial Consulting',
+                    quickLinks: 'Quick Links',
+                    followUs: 'Follow Us'
+                },
+                home: {
+                    hero: {
+                        stats: [
+                            { label: 'Countries', value: '3+' },
+                            { label: 'Members', value: '45+' },
+                            { label: 'Experience Years', value: '30+' },
+                            { label: 'Clients', value: '200+' },
+                        ],
+                        subService: 'Accounting - Audit - Tax - Consulting',
+                        tagline: 'Empowering Your Wealth Journey with our Experts',
+                        brandName: 'Experts Financial Consulting'
+                    },
+                    intro: {
+                        title: 'Who We Are?',
+                        headline: 'Our consultants have over 30 years of experience',
+                        body: 'We help companies and individuals make better financial decisions (as well as provide opinions and advice). The Experts Group provides advice on a variety of advisory topics that serve investors, business owners, and entrepreneurs, organizing family requirements from charters and governance procedures, including investment planning, financial and administrative organization, and tax planning. They can also help companies with financial planning, such as preparing financial statements, accounting policies, books and financial records, preparing actual and standard cost lists, and forecasting future possibilities in light of historical and upcoming budgets.',
+                        btn: 'Read More'
+                    },
+                    vision: {
+                        title: 'Our Vision',
+                        text: 'To be the leading financial consulting firm in Saudi Arabia and the region, providing our clients with the best advice and support possible to help them achieve their financial, administrative, operational, legal, regulatory and target growth goals.'
+                    },
+                    mission: {
+                        title: 'Our Mission',
+                        text: 'To provide our clients with a variety of high-quality financial, administrative and legal consulting services, tailored to meet the needs of their individuals, organizations, entities and families. We will work with our clients to achieve their ambitions and achieve their pre-defined goals.'
+                    },
+                    values: {
+                        title: 'Our Values',
+                        items: [
+                            'Emphasizing collective responsibility with individual accountability',
+                            'Demonstrating professionalism at the institutional level',
+                            'Adherence to regulatory requirements and legislation',
+                            'Dedication to Excellence',
+                            'Prioritizing customer satisfaction',
+                            'Embracing innovation and technological advancement',
+                            'Raising the level of employee expertise, skills and competencies',
+                            'Establishing credibility and reliability (accuracy)',
+                            'Promoting mutual respect',
+                            'Zero tolerance for corruption'
+                        ]
+                    },
+                    features: {
+                        title: 'Why Experts Financial Consulting?',
+                        cards: [
+                            { title: 'Experience', text: 'Our consultants and affiliated staff and collaborators have the necessary expertise to help our clients and partners make sound financial, administrative, organizational and regulatory decisions. Enabling them to understand their financial, technical, administrative and technical status and helping them develop a roadmap and good planning to achieve their goals.', icon: 'check-circle' },
+                            { title: 'Comfort', text: 'Consulting can give you peace of mind knowing that your money is managed by a complete system. Consultants with different professions and consultations can monitor your investments and ensure that they are invested and managed in the right way.', icon: 'users' },
+                            { title: 'Save Time & Cost', text: 'Advice and planning. Prior advice in light of financial, administrative, organizational, operational and legal consulting services can save you time, costs, trouble and shocks before they occur or happen, or deal with them with the necessary speed and accuracy when they occur.', icon: 'clock' },
+                            { title: 'Sources', text: 'Experts Financial Consulting Company for Non-Securities is one of the companies of the Consulting Expertise House Dr. Salah El-Sharkawy & Partners - an Egyptian company - whose experts and employees have the ability to access sources that individuals or decision-makers in companies and institutions may not be able to access on their own. These sources may include financial data, investment research, and tax and Zakat planning tools.', icon: 'shield' },
+                        ]
+                    },
+                    clients: { title: 'Our Clients' },
+                    taxBlock: {
+                        title: 'Tax and Zakat Laws and Regulations',
+                        text: 'Tax, Zakat, administrative and regulatory laws governing work can be complex and constantly changing, making it difficult for individuals and businesses to keep up. Our consultants can help ensure compliance with all relevant regulations and minimize the risk of penalties or fines.'
+                    },
+                    planning: {
+                        title: 'Financial, Tax and Zakat Planning',
+                        text: 'Financial advisors can help you create a comprehensive financial plan that takes into account your income, expenses, assets and liabilities. This plan can serve as a roadmap for your financial future and help you stay on track to achieve your goals.'
+                    },
+                    founders: {
+                        quote: 'Success always begins with an idea that can be implemented, but it goes through various pitfalls, ranging from difficult to more difficult, with God’s grace and the skill of those in charge of the idea among the founders.',
+                        author: 'Dr. Salah El-Sharkawy, Business Owner'
+                    }
+                },
+                aboutPage: {
+                    intro: 'At Experts Financial Consulting Company, We are committed to providing audit services High-level financial and tax consulting for individuals and companies a like With years of experience in the tax financial services sector, our team of caliber professionals is committed to helping our clients achieve their financial goals and maximize their financial potential.',
+                    partnersTitle: 'Partners',
+                    collaborationTitle: 'Partnership with',
+                    collaborations: [
+                        { text: 'Consultative Experience House Dr. Salah El-Sharkawy & Partners (Founding Partner) - an Egyptian company - and consultants licensed to practice legal and financial activities. Member of the Experts Group alliance, they have the ability to access various sources that decision-makers in companies and institutions may not be able to access on their own. These sources may include financial data and research, investment planning tools, and tax and Zakat planning.' },
+                        { text: 'An Emirati partnership with E&M Al Ansari Audit Company with the aim of providing various services in the field of financial consulting, auditing, and judicial expertise. This partnership comes in response to market needs and customer aspirations in Egypt, the UAE, and Saudi Arabia to obtain high-quality financial, legal, and specialized services.' }
+                    ],
+                    team: [
+                        { name: 'Dr. Salah El-Sharkawy', title: 'Founder Partner' },
+                        { name: 'Mr. Nabil El-Sharkawy', title: 'Tax and Administrative Partner' },
+                        { name: 'Dr. Hattan Farouk Shami', title: 'Financial and Administrative Consulting Partner' },
+                        { name: 'Ahmed Alansari', title: 'Tax and Zakat Partner' },
+                        { name: 'Mostafa el-Sharkawy', title: 'Audit and Consulting Partner' },
+                        { name: 'Mahmoud Diab', title: 'Managing Partner / Management Professional' },
+                        { name: 'Mohamed Abdelkarim', title: 'Audit Manager – Managing Partner' },
+                        { name: 'Ibrahim Dahi Al-Dahi', title: 'Audit and Financial Reporting' },
+                    ]
+                },
+                servicesPage: {
+                    items: [
+                        'Establishment of companies and implementation of the mechanism of mergers and acquisitions',
+                        'Legal services and consultations by legal specialists licensed to practice the profession',
+                        'Design and implementation of company policies and procedures',
+                        'Create a matrix of powers',
+                        'Design effective management systems for operation',
+                        'Design strong accounting, financial, inventory and operational systems',
+                        'Maintain accurate accounting books and provide regular financial reports using simplified accounting software',
+                        'Monitoring the tax system and dealing with the Zakat and Tax Authority',
+                        'Preparing strategic budgets and forecasting future cash flows',
+                        'Consulting service for non-banking activities and financing',
+                        'Preparing companies for initial public offerings in Saudi stocks'
+                    ],
+                    btn: 'Contact Us'
+                }
+            }
+        };
+
+        // --- STATE & APP LOGIC ---
+        let lang = 'ar';
+        let page = 'home';
+        let isMenuOpen = false;
+
+        function toggleLang() {
+            lang = lang === 'ar' ? 'en' : 'ar';
+            renderApp();
+        }
+
+        function setPage(newPage) {
+            page = newPage;
+            isMenuOpen = false; // close menu on nav
+            window.scrollTo(0, 0);
+            renderApp();
+        }
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            renderApp();
+        }
+
+        function getDir() {
+            return CONTENT[lang].meta.dir;
+        }
+
+        // --- RENDER HELPERS ---
+        
+        function NavLink(to, label, isMobile) {
+            const activeClass = page === to ? 'font-bold text-blue-200' : '';
+            const mobileClasses = 'block w-full text-start py-3 px-4 border-b border-gray-100';
+            const desktopClasses = 'mx-4 hover:text-blue-300 transition-colors';
+            const baseClass = isMobile ? mobileClasses : desktopClasses;
+            
+            return `<button onclick="setPage('${to}')" class="${baseClass} ${activeClass}">${label}</button>`;
+        }
+
+        function Header() {
+            const t = CONTENT[lang].nav;
+            const logoText = `
+                <div class="flex items-center gap-3 cursor-pointer" onclick="setPage('home')">
+                    <div class="w-10 h-10 bg-white rounded flex items-center justify-center text-[#082B5D] font-bold text-xl">E</div>
+                    <div class="flex flex-col">
+                        <span class="font-bold leading-tight uppercase tracking-wider text-sm">Experts</span>
+                        <span class="text-[10px] text-gray-300">Financial Consulting</span>
+                    </div>
+                </div>
+            `;
+            
+            const desktopNav = `
+                <nav class="hidden md:flex items-center text-sm font-medium">
+                    ${NavLink('home', t.home, false)}
+                    ${NavLink('about', t.about, false)}
+                    ${NavLink('services', t.services, false)}
+                    <button onclick="toggleLang()" class="bg-white/10 px-3 py-1 rounded hover:bg-white/20 ml-4 flex items-center gap-2">
+                        <i data-lucide="globe" width="14"></i> ${lang === 'ar' ? 'EN' : 'عربي'}
+                    </button>
+                </nav>
+            `;
+
+            const mobileToggle = `
+                <div class="md:hidden flex items-center gap-4">
+                    <button onclick="toggleLang()" class="font-bold">${lang === 'ar' ? 'EN' : 'AR'}</button>
+                    <button onclick="toggleMenu()">
+                        <i data-lucide="${isMenuOpen ? 'x' : 'menu'}"></i>
+                    </button>
+                </div>
+            `;
+
+            const mobileMenu = isMenuOpen ? `
+                <div class="md:hidden bg-white text-[#082B5D] absolute w-full left-0 top-[72px] border-t border-gray-200 shadow-xl z-40">
+                    ${NavLink('home', t.home, true)}
+                    ${NavLink('about', t.about, true)}
+                    ${NavLink('services', t.services, true)}
+                </div>
+            ` : '';
+
+            return `
+                <header class="bg-[#082B5D] text-white shadow-lg sticky top-0 z-50">
+                    <div class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center relative">
+                        ${logoText}
+                        ${desktopNav}
+                        ${mobileToggle}
+                    </div>
+                    ${mobileMenu}
+                </header>
+            `;
+        }
+
+        function Footer() {
+            const t = CONTENT[lang].footer;
+            const dir = CONTENT[lang].meta.dir;
+            
+            return `
+                <footer class="bg-[#000105] text-white pt-16 pb-8 border-t-4 border-[#082B5D]" dir="${dir}">
+                    <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-10">
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 text-[#9BACC8]">${t.contactTitle}</h3>
+                            <div class="space-y-3 text-gray-400">
+                                <p class="flex items-center gap-3"><i data-lucide="phone" width="18"></i> +966 55 389 7704</p>
+                                <p class="flex items-center gap-3"><i data-lucide="phone" width="18"></i> +966 50 568 0435</p>
+                                <p class="flex items-center gap-3"><i data-lucide="mail" width="18"></i> info@expertsfc.com</p>
+                                <p class="flex items-start gap-3"><i data-lucide="map-pin" width="18"></i> ${t.location}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col justify-start">
+                            <h3 class="text-xl font-bold mb-4 text-[#9BACC8]">${t.quickLinks}</h3>
+                            <ul class="space-y-2 text-gray-400">
+                                <li class="hover:text-white cursor-pointer" onclick="setPage('home')">${CONTENT[lang].nav.home}</li>
+                                <li class="hover:text-white cursor-pointer" onclick="setPage('about')">${CONTENT[lang].nav.about}</li>
+                                <li class="hover:text-white cursor-pointer" onclick="setPage('services')">${CONTENT[lang].nav.services}</li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="text-xl font-bold mb-4 text-[#9BACC8]">${t.followUs}</h3>
+                            <div class="flex gap-4">
+                                <a href="https://www.facebook.com/profile.php?id=61567189750116" target="_blank" class="w-10 h-10 rounded-full bg-[#082B5D] flex items-center justify-center hover:bg-white hover:text-[#082B5D] transition-colors"><i data-lucide="facebook" width="20"></i></a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-[#082B5D] flex items-center justify-center hover:bg-white hover:text-[#082B5D] transition-colors"><i data-lucide="twitter" width="20"></i></a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-[#082B5D] flex items-center justify-center hover:bg-white hover:text-[#082B5D] transition-colors"><i data-lucide="linkedin" width="20"></i></a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-[#082B5D] flex items-center justify-center hover:bg-white hover:text-[#082B5D] transition-colors"><i data-lucide="instagram" width="20"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="max-w-7xl mx-auto px-4 mt-12 pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+                        ${t.rights}
+                    </div>
+                </footer>
+            `;
+        }
+
+        // --- PAGE RENDERERS ---
+
+        function renderHome() {
+            const t = CONTENT[lang].home;
+            const dir = CONTENT[lang].meta.dir;
+            const arrowIcon = lang === 'ar' ? 'arrow-left' : 'arrow-right';
+            
+            // Hero Stats
+            const statsHTML = t.hero.stats.map(stat => `
+                <div class="bg-white/5 p-6 rounded-lg text-center hover:bg-white/10 transition border border-white/10">
+                    <div class="text-4xl font-bold text-blue-300 mb-2">${stat.value}</div>
+                    <div class="text-sm uppercase tracking-wider">${stat.label}</div>
+                </div>
+            `).join('');
+
+            // Sub-services Strip
+            const subServicesHTML = t.hero.subService.split('-').map(s => `
+                <span class="flex items-center gap-2"><div class="w-2 h-2 rounded-full bg-blue-500"></div> ${s.trim()}</span>
+            `).join('');
+
+            // Values
+            const valuesHTML = t.values.items.map(val => `
+                <div class="flex items-start gap-3 bg-white p-4 rounded shadow-sm border-l-4 border-transparent hover:border-blue-900 transition-all">
+                    <div class="mt-1 text-[#082B5D]"><i data-lucide="check-circle" width="20"></i></div>
+                    <p class="text-gray-700">${val}</p>
+                </div>
+            `).join('');
+
+            // Features Cards
+            const featuresHTML = t.features.cards.map(card => `
+                <div class="bg-white rounded-lg shadow-lg p-6 hover:-translate-y-1 transition-transform duration-300 border-t-4 border-[#082B5D] h-full">
+                    <div class="text-[#082B5D] mb-4 bg-blue-50 w-12 h-12 flex items-center justify-center rounded-lg"><i data-lucide="${card.icon}"></i></div>
+                    <h3 class="text-xl font-bold mb-3 text-[#082B5D]">${card.title}</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">${card.text}</p>
+                </div>
+            `).join('');
+
+            // Client Ticker
+            const logoCount = 10;
+            const repeatedLogos = Array(30).fill(null).map((_, i) => {
+                const num = (i % logoCount) + 1;
+                return `
+                    <div class="flex-shrink-0 w-32 h-20 bg-gray-100 flex items-center justify-center mx-4 rounded grayscale hover:grayscale-0 transition-all border border-gray-200 text-gray-400 font-bold">
+                        CLIENT ${num}
+                    </div>
+                `;
+            }).join('');
+
+            return `
+                <div class="fade-in" dir="${dir}">
+                    <!-- Hero -->
+                    <div class="relative bg-[#082B5D] text-white py-20 overflow-hidden">
+                        <div class="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&q=80')] bg-cover bg-center"></div>
+                        <div class="relative max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
+                            <div>
+                                <h1 class="text-4xl md:text-6xl font-bold mb-6 leading-tight">${t.hero.brandName}</h1>
+                                <p class="text-xl md:text-2xl text-blue-200 mb-4">${t.hero.tagline}</p>
+                                <div class="bg-white/10 backdrop-blur-sm p-4 rounded-lg inline-block border-l-4 border-blue-400">
+                                    <p class="font-mono text-sm">${t.hero.subService}</p>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                ${statsHTML}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Strip -->
+                    <div class="bg-[#F6FBFE] border-b border-gray-200 py-6">
+                        <div class="max-w-7xl mx-auto px-4 flex flex-wrap justify-center gap-6 text-[#082B5D] font-medium opacity-80 text-sm md:text-base">
+                            ${subServicesHTML}
+                        </div>
+                    </div>
+
+                    <!-- Intro (Text Only) -->
+                    <section class="py-16 px-4 md:px-8 max-w-7xl mx-auto">
+                        <div class="max-w-4xl mx-auto text-center md:text-start md:flex md:items-center md:gap-12">
+                             <div class="w-full">
+                                <span class="text-blue-500 font-bold uppercase tracking-widest text-sm">${t.intro.title}</span>
+                                <h2 class="text-3xl font-bold mt-2 mb-6 text-[#082B5D]">${t.intro.headline}</h2>
+                                <p class="text-gray-600 leading-relaxed mb-8">${t.intro.body}</p>
+                                <button onclick="setPage('about')" class="bg-[#082B5D] text-white px-8 py-3 rounded hover:bg-blue-800 transition flex items-center gap-2 mx-auto md:mx-0">
+                                    ${t.intro.btn} <i data-lucide="${arrowIcon}" width="18"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Vision/Mission -->
+                    <div class="bg-[#082B5D] text-white py-20">
+                        <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-16">
+                            <div class="space-y-4">
+                                <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-6 text-white"><i data-lucide="bar-chart-3" width="32"></i></div>
+                                <h3 class="text-3xl font-bold">${t.vision.title}</h3>
+                                <p class="text-blue-100 leading-relaxed">${t.vision.text}</p>
+                            </div>
+                            <div class="space-y-4">
+                                <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-6 text-white"><i data-lucide="pie-chart" width="32"></i></div>
+                                <h3 class="text-3xl font-bold">${t.mission.title}</h3>
+                                <p class="text-blue-100 leading-relaxed">${t.mission.text}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Values -->
+                    <section class="py-16 px-4 md:px-8 max-w-7xl mx-auto bg-[#F6FBFE]">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center text-[#082B5D]">${t.values.title}</h2>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+                            ${valuesHTML}
+                        </div>
+                    </section>
+
+                    <!-- Features -->
+                    <section class="py-16 px-4 md:px-8 max-w-7xl mx-auto">
+                        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center text-[#082B5D]">${t.features.title}</h2>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+                            ${featuresHTML}
+                        </div>
+                    </section>
+
+                    <!-- Clients Ticker -->
+                    <div class="bg-gray-50 py-12 border-y border-gray-200 group">
+                        <div class="max-w-7xl mx-auto px-4 mb-6">
+                            <h2 class="text-3xl md:text-4xl font-bold mb-10 text-[#082B5D] ${lang === 'ar' ? 'text-right' : 'text-left'}">${t.clients.title}</h2>
+                        </div>
+                        <div class="w-full overflow-hidden py-10 bg-white relative">
+                            <div class="flex animate-marquee group-hover:[animation-play-state:paused] w-max">
+                                ${repeatedLogos}
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tax/Planning -->
+                    <section class="py-16 px-4 md:px-8 max-w-7xl mx-auto bg-[#02153D] text-white">
+                        <div class="grid md:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <h2 class="text-3xl font-bold mb-6">${t.taxBlock.title}</h2>
+                                <p class="text-gray-300 leading-relaxed mb-6">${t.taxBlock.text}</p>
+                                <h3 class="text-2xl font-bold mb-4 text-blue-300">${t.planning.title}</h3>
+                                <p class="text-gray-300 leading-relaxed">${t.planning.text}</p>
+                            </div>
+                            <div class="bg-white/10 p-8 rounded-lg backdrop-blur-md border border-white/20">
+                                <div class="text-4xl text-blue-400 mb-4">❝</div>
+                                <p class="text-lg italic mb-6 leading-relaxed">${t.founders.quote}</p>
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 bg-gray-300 rounded-full"></div> 
+                                    <span class="font-bold text-blue-200">${t.founders.author}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        function renderAbout() {
+            const t = CONTENT[lang].aboutPage;
+            const dir = CONTENT[lang].meta.dir;
+            
+            const teamHTML = t.team.map(member => `
+                <div class="bg-white rounded-lg overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300">
+                   <div class="p-6 text-center border-t-4 border-[#082B5D]">
+                      <h3 class="text-xl font-bold text-[#082B5D] mb-2">${member.name}</h3>
+                      <p class="text-sm text-gray-500 uppercase tracking-wide">${member.title}</p>
+                   </div>
+                </div>
+            `).join('');
+
+            const collabsHTML = t.collaborations.map(collab => `
+                <div class="flex flex-col md:flex-row items-start gap-6 bg-white p-8 rounded-lg shadow-md border-l-4 border-[#082B5D]">
+                    <div class="mt-1 text-[#082B5D] shrink-0">
+                        <i data-lucide="handshake" width="32"></i>
+                    </div>
+                    <p class="text-gray-700 leading-loose text-lg">${collab.text}</p>
+                </div>
+            `).join('');
+
+            return `
+                <div class="fade-in pb-20" dir="${dir}">
+                    <div class="bg-[#082B5D] text-white py-16">
+                        <div class="max-w-7xl mx-auto px-4">
+                            <h1 class="text-4xl font-bold">${CONTENT[lang].nav.about}</h1>
+                        </div>
+                    </div>
+                    
+                    <section class="py-16 px-4 md:px-8 max-w-7xl mx-auto">
+                        <div class="max-w-4xl mx-auto text-center mb-16">
+                            <p class="text-xl md:text-2xl leading-relaxed text-gray-700">${t.intro}</p>
+                        </div>
+
+                        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center text-[#082B5D]">${t.partnersTitle}</h2>
+                        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 mb-20">
+                            ${teamHTML}
+                        </div>
+
+                        <h2 class="text-3xl md:text-4xl font-bold mb-10 text-center text-[#082B5D]">${t.collaborationTitle}</h2>
+                        <div class="space-y-8 mt-12">
+                            ${collabsHTML}
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        function renderServices() {
+            const t = CONTENT[lang].servicesPage;
+            const dir = CONTENT[lang].meta.dir;
+            const arrowIcon = lang === 'ar' ? 'arrow-left' : 'arrow-right';
+
+            const itemsHTML = t.items.map((service, i) => `
+                <div class="flex gap-4 p-6 bg-white rounded-lg shadow-md border border-gray-100 hover:border-blue-200 transition-colors">
+                    <div class="text-5xl font-bold text-[#F0F4F8] select-none">${String(i+1).padStart(2, '0')}</div>
+                    <div>
+                        <h3 class="text-lg font-bold text-[#082B5D] mb-3">${service}</h3>
+                        <button class="text-sm text-blue-500 font-semibold hover:underline flex items-center gap-1">
+                            ${t.btn} <i data-lucide="${arrowIcon}" width="14"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            return `
+                <div class="fade-in pb-20" dir="${dir}">
+                    <div class="bg-[#082B5D] text-white py-16">
+                        <div class="max-w-7xl mx-auto px-4">
+                            <h1 class="text-4xl font-bold">${CONTENT[lang].nav.services}</h1>
+                        </div>
+                    </div>
+
+                    <section class="py-16 px-4 md:px-8 max-w-7xl mx-auto">
+                        <div class="grid md:grid-cols-2 gap-8">
+                            ${itemsHTML}
+                        </div>
+                    </section>
+                </div>
+            `;
+        }
+
+        // --- MAIN RENDER FUNCTION ---
+        function renderApp() {
+            const app = document.getElementById('app');
+            
+            // Update HTML Lang/Dir attributes
+            document.documentElement.lang = lang;
+            document.documentElement.dir = CONTENT[lang].meta.dir;
+            
+            // Update Body Font Class
+            document.body.className = `bg-[#F6FBFE] text-[#000105] ${CONTENT[lang].meta.font}`;
+
+            let pageContent = '';
+            if (page === 'home') pageContent = renderHome();
+            else if (page === 'about') pageContent = renderAbout();
+            else if (page === 'services') pageContent = renderServices();
+
+            app.innerHTML = `
+                ${Header()}
+                <main class="flex-grow">
+                    ${pageContent}
+                </main>
+                ${Footer()}
+            `;
+            
+            // Re-initialize Icons
+            lucide.createIcons();
+        }
+
+        // Initial Render
+        renderApp();
+
+    </script>
+</body>
+</html>
